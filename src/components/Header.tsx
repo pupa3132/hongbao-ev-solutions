@@ -1,24 +1,24 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Menu, X, Download, Sun, Moon } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X, Download, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
   const navItems = [
-    { href: '#about', label: 'เกี่ยวกับ' },
-    { href: '#experience', label: 'ประสบการณ์' },
-    { href: '#skills', label: 'ทักษะ' },
-    { href: '#projects', label: 'ผลงาน' },
-    { href: '#contact', label: 'ติดต่อ' }
+    { href: "#about", label: "เกี่ยวกับ" },
+    { href: "#experience", label: "ประสบการณ์" },
+    { href: "#skills", label: "ทักษะ" },
+    { href: "#projects", label: "ผลงาน" },
+    { href: "#contact", label: "ติดต่อ" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
     }
   };
@@ -30,10 +30,14 @@ const Header = () => {
           {/* Logo/Brand */}
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">SE</span>
+              <span className="text-primary-foreground font-bold text-sm">
+                SE
+              </span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="font-playfair font-semibold text-lg text-foreground">SD&ERP Specialist</h1>
+              <h1 className="font-playfair font-semibold text-lg text-foreground">
+                SD&ERP Specialist
+              </h1>
               <p className="text-xs text-muted-foreground">Hongbao EV</p>
             </div>
           </div>
@@ -56,20 +60,22 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="w-9 h-9"
             >
               <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             </Button>
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="hidden lg:flex items-center space-x-2"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download CV</span>
-            </Button>
+            <a href="/cv.pdf" download>
+              <Button
+                variant="outline"
+                size="sm"
+                className="hidden lg:flex items-center space-x-2"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download CV</span>
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -104,17 +110,23 @@ const Header = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                   className="flex items-center space-x-2"
                 >
                   <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                   <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                   <span className="ml-2">Toggle Theme</span>
                 </Button>
-                <Button variant="outline" size="sm" className="flex items-center space-x-2">
-                  <Download className="w-4 h-4" />
-                  <span>Download CV</span>
-                </Button>
+                <a href="/cv.pdf" download>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="hidden lg:flex items-center space-x-2"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download CV</span>
+                  </Button>
+                </a>
               </div>
             </nav>
           </div>
